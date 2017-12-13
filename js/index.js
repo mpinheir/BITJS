@@ -6,10 +6,12 @@ xmlhttp.onreadystatechange = function() {
         
         var usrate = myObj.bpi.USD.rate;
         var gbrate = myObj.bpi.GBP.rate;
+        var eurrate = myObj.bpi.EUR.rate;
 
         //Prints total number of Earthquakes read from USGS.gov site.
         document.querySelector('.uscurrency span').innerHTML = usrate;
         document.querySelector('.gbpcurrency span').innerHTML = gbrate;
+        document.querySelector('.eurcurrency span').innerHTML = eurrate;
         
     }
 };
