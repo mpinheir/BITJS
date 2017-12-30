@@ -6,36 +6,32 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
         <!-- Local CSS styles -->
         <link rel="stylesheet" href="styles/style.css">
 
     </head>
     <body>
-        
-        <div class="container-fuild">
-            <header class="jumbotron text-center">
-                <h2>Bitcoin</h2>
-            </header>
-    
-            <section class="content container">
-                <div id="tablePrint"> </div>
-                <div class="uscurrency">USD: <span></span></div>
-                <div class="gbpcurrency">GBP: <span></span></div>
-                <div class="eurcurrency">EUR: <span></span></div>
-            </section>
+        <div class="table-title">
+            <h3>Bitcoin</h3>
         </div>
-        
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <table class="table-fill">
+            <thead>
+                <tr>
+                    <th class="text-left">US$</th>
+                    <th class="text-left">GBP</th>
+                    <th class="text-left">Euro</th>
+                </tr>
+            </thead>
+            <tbody class="table-hover">
+                <tr>
+                    <td class="text-left uscurrency" ><span></span></td>
+                    <td class="text-left gbpcurrency"><span></span></td>
+                    <td class="text-left eurcurrency"><span></span></td>
+                </tr>
+            </tbody>
+        </table>
 
         <!-- Local JavaScript -->
         <script src="js/index.js"></script>
-        <script src="js/tools.js"></script>
-</body>
+    </body>
 </html>
