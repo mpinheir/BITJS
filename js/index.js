@@ -32,9 +32,10 @@ function getBrlRate () {
 
       var brlBitCoinObj = JSON.parse(this.responseText);
 
-      //Get BRL rate and display in table
+      //Get BRL rate, format and display in table
       var brlRate = brlBitCoinObj.ticker.sell;
-      document.querySelector('.brlcurrency span').innerHTML = "$ "+ brlRate;
+      var formattedBrlRate = valueToBrlFormat(parseFloat(brlRate));
+      document.querySelector('.brlcurrency span').innerHTML = formattedBrlRate;
 
     }
   }
@@ -42,4 +43,8 @@ function getBrlRate () {
   btcToBrlXmlHttp.open('GET', 'https://www.mercadobitcoin.net/api/BTC/ticker/', true)
   btcToBrlXmlHttp.send();
 
+}
+
+function valueToBrlFormat(value) {
+  return "R$ " + value.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
 }
