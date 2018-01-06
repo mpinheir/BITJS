@@ -46,5 +46,5 @@ function getBrlRate () {
 }
 
 function valueToBrlFormat(value) {
-  return "R$ " + value.toFixed(2).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
+  return "R$ " + value.toFixed(4).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
 }
