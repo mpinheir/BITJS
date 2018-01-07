@@ -3,36 +3,52 @@
     <head>
         <title>Bitcoint price.</title>
 
+        <!-- Bootstrap-->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <!-- Local CSS styles -->
-        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/style.css" -->
 
     </head>
     <body>
-        <div class="table-title">
-            <h3>Bitcoin</h3>
+        <div class="container-fluid">
+            <div>
+                <h3>Bitcoin</h3>
+            </div>
+            <table class="table-striped table-condensed table-responsive">
+                <tbody>
+                    <tr>
+                        <th>BRL</th>
+                        <td class="brlcurrency">
+                            <span></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Euro</th>
+                        <td class="eurcurrency">
+                            <span></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>GBP</th>
+                        <td class="gbpcurrency">
+                            <span></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>US$</th>
+                        <td class="uscurrency">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-        <table class="table-fill">
-            <thead>
-                <tr>
-                    <th class="text-left">US$</th>
-                    <th class="text-left">GBP</th>
-                    <th class="text-left">Euro</th>
-                    <th class="text-left">BRL</th>
-                </tr>
-            </thead>
-            <tbody class="table-hover">
-                <tr>
-                    <td class="text-left small-padding uscurrency" ><span></span></td>
-                    <td class="text-left small-padding gbpcurrency"><span></span></td>
-                    <td class="text-left small-padding eurcurrency"><span></span></td>
-                    <td class="text-left small-padding brlcurrency"><span></span></td>
-                </tr>
-            </tbody>
-        </table>
-
+    
         <!-- Local JavaScript -->
         <script src="js/index.js"></script>
     </body>
