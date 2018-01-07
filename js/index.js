@@ -1,29 +1,37 @@
 
-var xmlhttp = new XMLHttpRequest();
+function valueToBrlFormat(value) {
+  //formats BRL amount as per standar brazilian currency fromatting.
 
-xmlhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        var myObj = JSON.parse(this.responseText);
-
-        var usrate = myObj.bpi.USD.rate;
-        var gbrate = myObj.bpi.GBP.rate;
-        var eurrate = myObj.bpi.EUR.rate;
-
-        //Displays Bitcoin value in US$, British Pounds and Euro.
-        document.querySelector('.uscurrency span').innerHTML = "$ "+usrate;
-        document.querySelector('.gbpcurrency span').innerHTML = "£ "+gbrate;
-        document.querySelector('.eurcurrency span').innerHTML = "€ "+eurrate;
-
-        //Get Bitcoin value in R$ (BRL)
-        getBrlRate(usrate);
-
-    }
+  return "R$ " + value.toFixed(4).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
 }
 
-xmlhttp.open('GET', 'https://api.coindesk.com/v1/bpi/currentprice.json', true);
-xmlhttp.send();
+function getInternationalRates(){
+  //gets bitcoin json from coindesk (US$, GBP and Euro)
+
+  var xmlhttp = new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var myObj = JSON.parse(this.responseText);
+
+      var usrate = myObj.bpi.USD.rate;
+      var gbrate = myObj.bpi.GBP.rate;
+      var eurrate = myObj.bpi.EUR.rate;
+
+      //Displays Bitcoin value in US$, British Pounds and Euro.
+      document.querySelector('.uscurrency span').innerHTML = "$ " + usrate;
+      document.querySelector('.gbpcurrency span').innerHTML = "£ " + gbrate;
+      document.querySelector('.eurcurrency span').innerHTML = "€ " + eurrate;
+    }
+  }
+
+  xmlhttp.open('GET', 'https://api.coindesk.com/v1/bpi/currentprice.json', true);
+  xmlhttp.send();
+
+}
 
 function getBrlRate () {
+  //gets bitcoin json from mercado bitcoin (Brazilian Reai)
 
   var btcToBrlXmlHttp = new XMLHttpRequest();
 
@@ -45,6 +53,19 @@ function getBrlRate () {
 
 }
 
-function valueToBrlFormat(value) {
-  return "R$ " + value.toFixed(4).replace('.', ',').replace(/(\d)(?=(\d{3})+\,)/g, "$1.");
+
+
+function updateValues(){
+  //Bitcoin value in US$, British Pounds and Euro
+  getInternationalRates();
+  
+  //Bitcoin value in R$ (BRL)
+  getBrlRate();
 }
+
+
+//updates values when the script runs for the first time
+updateValues();
+
+//values will be updated every 60 seconds
+setInterval(updateValues, 60000);
